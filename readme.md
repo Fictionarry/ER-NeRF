@@ -4,7 +4,7 @@ This is the official repo for our ICCV2023 paper **Efficient Region-Aware Neural
 
 ![image](assets/main.png)
 
-## Install
+## Installation
 
 Tested on Ubuntu 18.04, Pytorch 1.12 and CUDA 11.3.
 
@@ -44,7 +44,7 @@ pip install tensorflow-gpu==2.8.0
 
 ## Datasets and pretrained models
 
-We got part of the experiment videos from [AD-NeRF](https://github.com/YudongGuo/AD-NeRF), [DFRF](https://github.com/sstzal/DFRF), [GeneFace](https://github.com/yerfor/GeneFace) and YouTube. Due to copyright restrictions, we can't distribute all of them. You may have to download and crop these videos by youself. Here is an example training video (Obama) from AD-NeRF with the resolution of 450x450. 
+We got the experiment videos mainly from [AD-NeRF](https://github.com/YudongGuo/AD-NeRF), [DFRF](https://github.com/sstzal/DFRF), [GeneFace](https://github.com/yerfor/GeneFace) and YouTube. Due to copyright, we can't distribute all of them. You may have to download and crop these videos by youself. Here is an example training video (Obama) from AD-NeRF with the resolution of 450x450. 
 
 ```
 mkdir -p data/obama
