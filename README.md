@@ -44,7 +44,7 @@ pip install tensorflow-gpu==2.8.0
 
 ## Datasets and pretrained models
 
-We get the experiment videos mainly from [AD-NeRF](https://github.com/YudongGuo/AD-NeRF), [DFRF](https://github.com/sstzal/DFRF), [GeneFace](https://github.com/yerfor/GeneFace) and YouTube. Due to copyright restrictions, we can't distribute them. You can download these videos and crop them by youself. Here is an example training video (Obama) from AD-NeRF with the resolution of 450x450. 
+We get the experiment videos mainly from [AD-NeRF](https://github.com/YudongGuo/AD-NeRF), [DFRF](https://github.com/sstzal/DFRF), [GeneFace](https://github.com/yerfor/GeneFace) and YouTube. Due to copyright restrictions, we can't distribute all of them. You may have to download and crop these videos by youself. Here is an example training video (Obama) from AD-NeRF with the resolution of 450x450. 
 
 ```
 mkdir -p data/obama
