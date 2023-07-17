@@ -51,7 +51,7 @@ mkdir -p data/obama
 wget https://github.com/YudongGuo/AD-NeRF/blob/master/dataset/vids/Obama.mp4?raw=true -O data/obama/obama.mp4
 ```
 
-We also provide pretrained checkpoints on the Obama video clip. You can download and test them after completing the data pre-processing step by:
+We also provide pretrained checkpoints on the Obama video clip. After completing the data pre-processing step, you can [download](https://github.com/Fictionarry/ER-NeRF/releases/tag/ckpt) and test them by:
 
 ```bash
 python main.py data/obama/ --workspace trial_obama/ -O --test --ckpt trial_obama/checkpoints/ngp.pth   # head
