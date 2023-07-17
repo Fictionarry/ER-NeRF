@@ -55,7 +55,7 @@ We also provide pretrained checkpoints on the Obama video clip. After completing
 
 ```bash
 python main.py data/obama/ --workspace trial_obama/ -O --test --ckpt trial_obama/checkpoints/ngp.pth   # head
-python main.py data/obama/ --workspace trial_obama/ -O --test --torso --ckpt trial_obama_torso/checkpoints/ngp.pth   # head+torso
+python main.py data/obama/ --workspace trial_obama_torso/ -O --test --torso --ckpt trial_obama_torso/checkpoints/ngp.pth   # head+torso
 ```
 
 The test results should be about:
