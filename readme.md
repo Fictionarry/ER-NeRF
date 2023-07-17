@@ -44,14 +44,14 @@ pip install tensorflow-gpu==2.8.0
 
 ## Datasets and pretrained models
 
-We get the experiment videos mainly from [DFRF](https://github.com/sstzal/DFRF) and YouTube. Due to copyright restrictions, we can't distribute them. You can download these videos and crop them by youself. Here is an example training video (Obama) from AD-NeRF with the resolution of 450x450. 
+We got part of the experiment videos from [AD-NeRF](https://github.com/YudongGuo/AD-NeRF), [DFRF](https://github.com/sstzal/DFRF), [GeneFace](https://github.com/yerfor/GeneFace) and YouTube. Due to copyright restrictions, we can't distribute all of them. You may have to download and crop these videos by youself. Here is an example training video (Obama) from AD-NeRF with the resolution of 450x450. 
 
 ```
 mkdir -p data/obama
 wget https://github.com/YudongGuo/AD-NeRF/blob/master/dataset/vids/Obama.mp4?raw=true -O data/obama/obama.mp4
 ```
 
-We also provide pretrained checkpoints on the Obama video clip. After completing the data pre-processing step, you can [download](https://github.com/Fictionarry/ER-NeRF/releases/tag/ckpt) and test them by:
+We also provide pretrained checkpoints for the Obama video clip. After completing the data pre-processing step, you can [download](https://github.com/Fictionarry/ER-NeRF/releases/tag/ckpt) and test them by:
 
 ```bash
 python main.py data/obama/ --workspace trial_obama/ -O --test --ckpt trial_obama/checkpoints/ngp.pth   # head
