@@ -9,9 +9,10 @@ Tested on Ubuntu 18.04, Pytorch 1.12 and CUDA 11.3.
 ### Install dependency
 
 ```bash
-conda install pytorch==1.12.1 cudatoolkit=11.3 -c pytorch
+conda create -n ernerf python=3.10
+conda install pytorch==1.12.1 torchvision==0.13.1 cudatoolkit=11.3 -c pytorch
 pip install -r requirements.txt
-pip install "git+https://github.com/facebookresearch/pytorch3d.git"
+pip install "git+git@github.com:facebookresearch/pytorch3d.git"
 pip install tensorflow-gpu==2.8.0
 ```
 
@@ -77,6 +78,10 @@ The test results should be about:
   ```bash
   python data_utils/process.py data/<ID>/<ID>.mp4
   ```
+
+* Obtain AU45 for eyes blinking
+  
+  Follow [OpenFace](https://github.com/TadasBaltrusaitis/OpenFace) to obtain `au.csv` for the video and put it into `data/<ID>`.
 
 ### Audio Pre-process
 

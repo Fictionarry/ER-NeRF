@@ -2,7 +2,6 @@ import torch
 import argparse
 
 from nerf_triplane.provider import NeRFDataset
-from nerf_triplane.gui import NeRFGUI
 from nerf_triplane.utils import *
 from nerf_triplane.network import NeRFNetwork
 
@@ -197,6 +196,7 @@ if __name__ == '__main__':
         model.eye_areas = test_loader._data.eye_area
 
         if opt.gui:
+            from nerf_triplane.gui import NeRFGUI
             # we still need test_loader to provide audio features for testing.
             with NeRFGUI(opt, trainer, test_loader) as gui:
                 gui.render()
