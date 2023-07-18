@@ -492,8 +492,10 @@ class LMDMeter:
         else:
 
             import face_alignment
-
-            self.predictor = face_alignment.FaceAlignment(face_alignment.LandmarksType._2D, flip_input=False)
+            try:
+                self.predictor = face_alignment.FaceAlignment(face_alignment.LandmarksType._2D, flip_input=False)
+            except:
+                self.predictor = face_alignment.FaceAlignment(face_alignment.LandmarksType.TWO_D, flip_input=False)
 
         self.V = 0
         self.N = 0
