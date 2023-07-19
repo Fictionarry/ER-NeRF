@@ -1,6 +1,6 @@
 # Efficient Region-Aware Neural Radiance Fields for High-Fidelity Talking Portrait Synthesis
 This is the official repository for our ICCV 2023 paper **Efficient Region-Aware Neural Radiance Fields for High-Fidelity Talking Portrait Synthesis**.
-### [Paper](http://arxiv.org/abs/) | [Video](https://youtu.be/Gc2d3Z8MMuI)
+### [Paper](https://arxiv.org/abs/2307.09323) | [Video](https://youtu.be/Gc2d3Z8MMuI)
 ![image](assets/main.png)
 ## Installation
 
@@ -81,7 +81,7 @@ The test results should be about:
 
 * Obtain AU45 for eyes blinking
   
-  Follow [OpenFace](https://github.com/TadasBaltrusaitis/OpenFace) to obtain `au.csv` for the video and put it into `data/<ID>`.
+  Run `FeatureExtraction` in [OpenFace](https://github.com/TadasBaltrusaitis/OpenFace), rename and move the output CSV file to `data/<ID>/au.csv`.
 
 ### Audio Pre-process
 
@@ -133,7 +133,7 @@ Cite as below if you find this repository is helpful to your project:
 @article{li2023ernerf,
   title={Efficient Region-Aware Neural Radiance Fields for High-Fidelity Talking Portrait Synthesis},
   author={Li, Jiahe and Zhang, Jiawei and Bai, Xiao and Zhou, Jun and Gu, Lin},
-  journal={},
+  journal={arXiv preprint arXiv:2307.09323},
   year={2023}
 }
 ```
