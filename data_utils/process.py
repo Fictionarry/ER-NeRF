@@ -342,43 +342,6 @@ def save_transforms(base_dir, ori_imgs_dir):
     print(f'[INFO] ===== finished saving transforms =====')
 
 
-
-def extract_torso_train(base_dir, ori_imgs_dir):
-
-    print(f'[INFO] ===== extract training torso gt images for {base_dir} =====')
-
-    # load bg
-    bg_image = cv2.imread(os.path.join(base_dir, 'bc.jpg'), cv2.IMREAD_UNCHANGED)
-    
-    image_paths = glob.glob(os.path.join(ori_imgs_dir, '*.jpg'))
-
-    for image_path in tqdm.tqdm(image_paths):
-        # read ori image
-        ori_image = cv2.imread(image_path, cv2.IMREAD_UNCHANGED) # [H, W, 3]
-
-        # read semantics
-        seg = cv2.imread(image_path.replace('ori_imgs', 'parsing').replace('.jpg', '.png'))
-        head_part = (seg[..., 0] == 255) & (seg[..., 1] == 0) & (seg[..., 2] == 0)
-        neck_part = (seg[..., 0] == 0) & (seg[..., 1] == 255) & (seg[..., 2] == 0)
-        torso_part = (seg[..., 0] == 0) & (seg[..., 1] == 0) & (seg[..., 2] == 255)
-        bg_part = (seg[..., 0] == 255) & (seg[..., 1] == 255) & (seg[..., 2] == 255)
-
-        # get gt image
-        gt_image = ori_image.copy()
-        gt_image[bg_part] = bg_image[bg_part]
-        cv2.imwrite(image_path.replace('ori_imgs', 'gt_imgs'), gt_image)
-
-        # get torso image
-        torso_image = gt_image.copy() # rgb
-        torso_image[head_part] = bg_image[head_part]
-        torso_alpha = 255 * np.ones((gt_image.shape[0], gt_image.shape[1], 1), dtype=np.uint8) # alpha
-        torso_alpha[head_part] = 0
-        torso_alpha[bg_part] = 0
-        cv2.imwrite(image_path.replace('ori_imgs', 'torso_imgs_train').replace('.jpg', '.png'), np.concatenate([torso_image, torso_alpha], axis=-1))
-
-
-
-
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('path', type=str, help="path to video file")
@@ -394,13 +357,11 @@ if __name__ == '__main__':
     parsing_dir = os.path.join(base_dir, 'parsing')
     gt_imgs_dir = os.path.join(base_dir, 'gt_imgs')
     torso_imgs_dir = os.path.join(base_dir, 'torso_imgs')
-    torso_imgs_train_dir = os.path.join(base_dir, 'torso_imgs_train')
 
     os.makedirs(ori_imgs_dir, exist_ok=True)
     os.makedirs(parsing_dir, exist_ok=True)
     os.makedirs(gt_imgs_dir, exist_ok=True)
     os.makedirs(torso_imgs_dir, exist_ok=True)
-    os.makedirs(torso_imgs_train_dir, exist_ok=True)
 
 
     # extract audio
@@ -438,7 +399,4 @@ if __name__ == '__main__':
     # save transforms.json
     if opt.task == -1 or opt.task == 9:
         save_transforms(base_dir, ori_imgs_dir)
-
-    if opt.task == -1 or opt.task == 10:
-        extract_torso_train(base_dir, ori_imgs_dir)
 
