@@ -1,6 +1,6 @@
 # Efficient Region-Aware Neural Radiance Fields for High-Fidelity Talking Portrait Synthesis
 This is the official repository for our ICCV 2023 paper **Efficient Region-Aware Neural Radiance Fields for High-Fidelity Talking Portrait Synthesis**.
-### [Paper](https://arxiv.org/abs/2307.09323) | [Video](https://youtu.be/Gc2d3Z8MMuI)
+### [Paper](https://arxiv.org/abs/2307.09323) | [Project](https://fictionarry.github.io/ER-NeRF/) | [Video](https://youtu.be/Gc2d3Z8MMuI)
 ![image](assets/main.png)
 ## Installation
 
