@@ -1,15 +1,2 @@
-__pycache__/
-build/
-*.egg-info/
-*.so
-*.mp4
-
-tmp*
-trial*/
-
-data
-data_utils/face_tracking/3DMM/*
-data_utils/face_parsing/79999_iter.pth
-
-pretrained
-*.mp4
+.DS_store
+.idea
