@@ -94,7 +94,7 @@ python data_utils/deepspeech_features/extract_ds_features.py --input data/<name>
 You can also try to extract audio features via Wav2Vec like [RAD-NeRF](https://github.com/ashawkey/RAD-NeRF) by:
 
 ```bash
-python nerf/asr.py --wav data/<name>.wav --save_feats # save to data/<name>_eo.npy
+python data_utils/wav2vec.py --wav data/<name>.wav --save_feats # save to data/<name>_eo.npy
 ```
 
 ### Train

@@ -47,7 +47,10 @@ def extract_landmarks(ori_imgs_dir):
     print(f'[INFO] ===== extract face landmarks from {ori_imgs_dir} =====')
 
     import face_alignment
-    fa = face_alignment.FaceAlignment(face_alignment.LandmarksType._2D, flip_input=False)
+    try:
+        fa = face_alignment.FaceAlignment(face_alignment.LandmarksType._2D, flip_input=False)
+    except:
+        fa = face_alignment.FaceAlignment(face_alignment.LandmarksType.TWO_D, flip_input=False)
     image_paths = glob.glob(os.path.join(ori_imgs_dir, '*.jpg'))
     for image_path in tqdm.tqdm(image_paths):
         input = cv2.imread(image_path, cv2.IMREAD_UNCHANGED) # [H, W, 3]
@@ -346,7 +349,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('path', type=str, help="path to video file")
     parser.add_argument('--task', type=int, default=-1, help="-1 means all")
-    parser.add_argument('--asr', type=str, default='wav2vec', help="wav2vec or deepspeech")
+    parser.add_argument('--asr', type=str, default='deepspeech', help="wav2vec or deepspeech")
 
     opt = parser.parse_args()
 

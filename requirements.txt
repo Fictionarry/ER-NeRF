@@ -12,6 +12,7 @@ rich
 dearpygui
 packaging
 scipy
+scikit-learn
 
 face_alignment
 python_speech_features
