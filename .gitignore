@@ -12,5 +12,8 @@ data/*
 data_utils/face_tracking/3DMM/*
 data_utils/face_parsing/79999_iter.pth
 
+scripts/*
+!scripts/train_obama.sh
+
 pretrained
 *.mp4
