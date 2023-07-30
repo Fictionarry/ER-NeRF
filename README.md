@@ -154,4 +154,4 @@ Cite as below if you find this repository is helpful to your project:
 
 ## Acknowledgement
 
-This code is developed based on [RAD-NeRF](https://github.com/ashawkey/RAD-NeRF), [DFRF](https://github.com/sstzal/DFRF) and [AD-NeRF](https://github.com/YudongGuo/AD-NeRF).  Thanks for these great projects.
+This code is developed based on [RAD-NeRF](https://github.com/ashawkey/RAD-NeRF), [DFRF](https://github.com/sstzal/DFRF),   [GeneFace](https://github.com/yerfor/GeneFace), and [AD-NeRF](https://github.com/YudongGuo/AD-NeRF).  Thanks for these great projects.
