@@ -93,6 +93,7 @@ class MLP(nn.Module):
 class NeRFNetwork(NeRFRenderer):
     def __init__(self,
                  opt,
+                 audio_dim = 32,
                  # torso net (hard coded for now)
                  ):
         super().__init__(opt)
@@ -106,6 +107,8 @@ class NeRFNetwork(NeRFRenderer):
             self.audio_in_dim = 29
         elif 'hubert' in self.opt.asr_model:
             self.audio_in_dim = 1024
+            if 'cn' in self.opt.asr_model:
+                audio_dim = 64
         else:
             self.audio_in_dim = 32
             
@@ -113,7 +116,6 @@ class NeRFNetwork(NeRFRenderer):
             self.embedding = nn.Embedding(self.audio_in_dim, self.audio_in_dim)
 
         # audio network
-        audio_dim = 32
         self.audio_dim = audio_dim
         self.audio_net = AudioNet(self.audio_in_dim, self.audio_dim)
 

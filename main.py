@@ -163,7 +163,7 @@ if __name__ == '__main__':
         # freeze these keys
         for k, v in model.named_parameters():
             if k in model_dict:
-                # print(f'[INFO] freeze {k}, {v.shape}')
+                print(f'[INFO] freeze {k}, {v.shape}')
                 v.requires_grad = False
 
     

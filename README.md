@@ -85,7 +85,7 @@ The test results should be about:
 
 ### Audio Pre-process
 
-In our paper, we use DeepSpeech features for evaluation. You can select the type of audio feature by `--asr_model <deepspeech, esperanto, hubert, hubert_cn>`.
+In our paper, we use DeepSpeech features for evaluation. You can select the type of audio feature by `--asr_model <deepspeech, esperanto, hubert>`.
 
 
 * DeepSpeech
@@ -109,12 +109,6 @@ In our paper, we use DeepSpeech features for evaluation. You can select the type
   ```bash
   # Borrowed from GeneFace. English pre-trained.
   python data_utils/hubert.py --wav data/<name>.wav # save to data/<name>_hu.npy
-  ```
-
-  Different pre-trained models can be found on [Hugging Face](https://huggingface.co/) to enhance some certain speech-languages. Here we provide a sample for chinese:
-
-  ```bash
-  python data_utils/hubert_cn.py --wav data/<name>.wav # save to data/<name>_hu_cn.npy
   ```
 
 ### Train
