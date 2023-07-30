@@ -88,32 +88,34 @@ The test results should be about:
 In our paper, we use DeepSpeech features for evaluation. You can select the type of audio feature by `--asr_model <deepspeech, esperanto, hubert, hubert_cn>`.
 
 
-#### DeepSpeech
+* DeepSpeech
 
-```bash
-python data_utils/deepspeech_features/extract_ds_features.py --input data/<name>.wav # save to data/<name>.npy
-```
+  ```bash
+  python data_utils/deepspeech_features/extract_ds_features.py --input data/<name>.wav # save to data/<name>.npy
+  ```
 
-#### Wav2Vec
-You can also try to extract audio features via Wav2Vec like [RAD-NeRF](https://github.com/ashawkey/RAD-NeRF) by:
+* Wav2Vec
 
-```bash
-python data_utils/wav2vec.py --wav data/<name>.wav --save_feats # save to data/<name>_eo.npy
-```
+  You can also try to extract audio features via Wav2Vec like [RAD-NeRF](https://github.com/ashawkey/RAD-NeRF) by:
 
-#### HuBERT
-In our test, HuBERT extractor performs better for more languages, which has already been used in [GeneFace](https://github.com/yerfor/GeneFace).
+  ```bash
+  python data_utils/wav2vec.py --wav data/<name>.wav --save_feats # save to data/<name>_eo.npy
+  ```
 
-```bash
-# Borrowed from GeneFace. English pre-trained.
-python data_utils/hubert.py --wav data/<name>.wav # save to data/<name>_hu.npy
-```
+* HuBERT
 
-Different pre-trained models can be found on [Hugging Face](https://huggingface.co/) to enhance some certain speech-languages. Here we provide a sample for chinese:
+  In our test, HuBERT extractor performs better for more languages, which has already been used in [GeneFace](https://github.com/yerfor/GeneFace).
 
-```bash
-python data_utils/hubert_cn.py --wav data/<name>.wav # save to data/<name>_hu_cn.npy
-```
+  ```bash
+  # Borrowed from GeneFace. English pre-trained.
+  python data_utils/hubert.py --wav data/<name>.wav # save to data/<name>_hu.npy
+  ```
+
+  Different pre-trained models can be found on [Hugging Face](https://huggingface.co/) to enhance some certain speech-languages. Here we provide a sample for chinese:
+
+  ```bash
+  python data_utils/hubert_cn.py --wav data/<name>.wav # save to data/<name>_hu_cn.npy
+  ```
 
 ### Train
 
