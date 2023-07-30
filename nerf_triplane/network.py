@@ -107,8 +107,6 @@ class NeRFNetwork(NeRFRenderer):
             self.audio_in_dim = 29
         elif 'hubert' in self.opt.asr_model:
             self.audio_in_dim = 1024
-            if 'cn' in self.opt.asr_model:
-                audio_dim = 64
         else:
             self.audio_in_dim = 32
             

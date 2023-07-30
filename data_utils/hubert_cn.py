@@ -1,3 +1,5 @@
+# performs poor
+
 from transformers import Wav2Vec2FeatureExtractor, HubertModel
 import soundfile as sf
 import numpy as np

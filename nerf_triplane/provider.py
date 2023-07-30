@@ -394,8 +394,8 @@ class NeRFDataset:
                     aud_features = np.load(os.path.join(self.root_path, 'aud_eo.npy'))
                 elif 'deepspeech' in self.opt.asr_model:
                     aud_features = np.load(os.path.join(self.root_path, 'aud_ds.npy'))
-                elif 'hubert_cn' in self.opt.asr_model:
-                    aud_features = np.load(os.path.join(self.root_path, 'aud_hu_cn.npy'))
+                # elif 'hubert_cn' in self.opt.asr_model:
+                #     aud_features = np.load(os.path.join(self.root_path, 'aud_hu_cn.npy'))
                 elif 'hubert' in self.opt.asr_model:
                     aud_features = np.load(os.path.join(self.root_path, 'aud_hu.npy'))
                 else:
