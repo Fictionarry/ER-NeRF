@@ -87,6 +87,8 @@ The test results should be about:
 
 In our paper, we use DeepSpeech features for evaluation. You can select the type of audio feature by `--asr_model <deepspeech, esperanto, hubert>`.
 
+The sample rate of the audio should be 16k.
+
 
 * DeepSpeech
 
