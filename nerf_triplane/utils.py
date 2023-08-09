@@ -809,6 +809,13 @@ class Trainer(object):
             rgb = rgb.view(-1, xmax - xmin, ymax - ymin, 3).permute(0, 3, 1, 2).contiguous()
             pred_rgb = pred_rgb.view(-1, xmax - xmin, ymax - ymin, 3).permute(0, 3, 1, 2).contiguous()
 
+            padding_h = max(0, (32 - rgb.shape[-2] + 1) // 2)
+            padding_w = max(0, (32 - rgb.shape[-1] + 1) // 2)
+
+            if padding_w or padding_h:
+                rgb = torch.nn.functional.pad(rgb, (padding_w, padding_w, padding_h, padding_h))
+                pred_rgb = torch.nn.functional.pad(pred_rgb, (padding_w, padding_w, padding_h, padding_h))
+
             # torch_vis_2d(rgb[0])
             # torch_vis_2d(pred_rgb[0])
             

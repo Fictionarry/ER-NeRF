@@ -5,4 +5,4 @@ python main.py data/$dataset --workspace $workspace -O --iters 100000 --asr_mode
 cp -r $workspace/checkpoints $workspace/checkpoints_
 python main.py data/$dataset --workspace $workspace -O --iters 125000 --finetune_lips --patch_size 32 --asr_model $asr_model
 python main.py data/$dataset --workspace $workspace -O --test --asr_model $asr_model
-# python main.py data/$dataset --workspace $workspace_torso/ -O --torso --head_ckpt <head>.pth --iters 200000
+# python main.py data/$dataset --workspace $workspace_torso/ -O --torso --head_ckpt ngp.pth --iters 200000
