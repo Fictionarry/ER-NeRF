@@ -793,8 +793,8 @@ class Trainer(object):
         
         # patch-based rendering
         if self.opt.patch_size > 1 and not self.opt.finetune_lips:
-            rgb = rgb.view(-1, self.opt.patch_size, self.opt.patch_size, 3).permute(0, 3, 1, 2).contiguous()
-            pred_rgb = pred_rgb.view(-1, self.opt.patch_size, self.opt.patch_size, 3).permute(0, 3, 1, 2).contiguous()
+            rgb = rgb.view(-1, self.opt.patch_size, self.opt.patch_size, 3).permute(0, 3, 1, 2).contiguous() * 2 - 1
+            pred_rgb = pred_rgb.view(-1, self.opt.patch_size, self.opt.patch_size, 3).permute(0, 3, 1, 2).contiguous() * 2 - 1
 
             # torch_vis_2d(rgb[0])
             # torch_vis_2d(pred_rgb[0])
@@ -806,8 +806,8 @@ class Trainer(object):
         # lips finetune
         if self.opt.finetune_lips:
             xmin, xmax, ymin, ymax = data['rect']
-            rgb = rgb.view(-1, xmax - xmin, ymax - ymin, 3).permute(0, 3, 1, 2).contiguous()
-            pred_rgb = pred_rgb.view(-1, xmax - xmin, ymax - ymin, 3).permute(0, 3, 1, 2).contiguous()
+            rgb = rgb.view(-1, xmax - xmin, ymax - ymin, 3).permute(0, 3, 1, 2).contiguous() * 2 - 1
+            pred_rgb = pred_rgb.view(-1, xmax - xmin, ymax - ymin, 3).permute(0, 3, 1, 2).contiguous() * 2 - 1
 
             padding_h = max(0, (32 - rgb.shape[-2] + 1) // 2)
             padding_w = max(0, (32 - rgb.shape[-1] + 1) // 2)
