@@ -62,7 +62,12 @@ def get_hubert_from_16k_speech(speech, device="cuda:0"):
         ret = ret[:expected_T]
     return ret
 
-
+def make_even_first_dim(tensor):
+    size = list(tensor.size())
+    if size[0] % 2 == 1:
+        size[0] -= 1
+        return tensor[:size[0]]
+    return tensor
 
 import soundfile as sf
 import numpy as np
@@ -77,6 +82,7 @@ args = parser.parse_args()
 wav_16k_name = args.wav
 speech_16k, _ = sf.read(wav_16k_name)
 
-hubert_hidden = get_hubert_from_16k_speech(speech_16k).reshape(-1, 2, 1024)
+hubert_hidden = get_hubert_from_16k_speech(speech_16k)
+hubert_hidden = make_even_first_dim(hubert_hidden).reshape(-1, 2, 1024)
 np.save(wav_16k_name.replace('.wav', '_hu.npy'), hubert_hidden.detach().numpy())
 print(hubert_hidden.detach().numpy().shape)

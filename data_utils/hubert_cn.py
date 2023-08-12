@@ -8,9 +8,9 @@ import sys
 sys.path.append('.')
 
 print("Loading the Wav2Vec2 Processor...")
-feature_extractor = Wav2Vec2FeatureExtractor.from_pretrained("jonatasgrosman/exp_w2v2t_zh-cn_hubert_s449")
+feature_extractor = Wav2Vec2FeatureExtractor.from_pretrained("/hy-tmp/ER-NeRF-main/data_utils/hubert-large-ls960-ft")
 print("Loading the HuBERT Model...")
-hubert_model = HubertModel.from_pretrained("jonatasgrosman/exp_w2v2t_zh-cn_hubert_s449")
+hubert_model = HubertModel.from_pretrained("/hy-tmp/ER-NeRF-main/data_utils/hubert-large-ls960-ft")
 
 
 def get_hubert_from_16k_wav(wav_16k_name):
@@ -68,6 +68,12 @@ def get_hubert_from_16k_speech(speech, device="cuda:0"):
         ret = ret[:expected_T]
     return ret
 
+def make_even_first_dim(tensor):
+    size = list(tensor.size())
+    if size[0] % 2 == 1:
+        size[0] -= 1
+        return tensor[:size[0]]
+    return tensor
 
 
 import soundfile as sf
@@ -83,6 +89,8 @@ args = parser.parse_args()
 wav_16k_name = args.wav
 speech_16k, _ = sf.read(wav_16k_name)
 
-hubert_hidden = get_hubert_from_16k_speech(speech_16k).reshape(-1, 2, 1024)
+hubert_hidden = get_hubert_from_16k_speech(speech_16k)
+hubert_hidden = make_even_first_dim(hubert_hidden).reshape(-1, 2, 1024)
+
 np.save(wav_16k_name.replace('.wav', '_hu_cn.npy'), hubert_hidden.detach().numpy())
 print(hubert_hidden.detach().numpy().shape)
