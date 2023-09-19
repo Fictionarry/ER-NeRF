@@ -85,10 +85,9 @@ The test results should be about:
 
 ### Audio Pre-process
 
-In our paper, we use DeepSpeech features for evaluation. You can select the type of audio feature by `--asr_model <deepspeech, esperanto, hubert>`.
+In our paper, we use DeepSpeech features for evaluation. 
 
-The sample rate of the audio should be 16k.
-
+You should specify the type of audio feature by `--asr_model <deepspeech, esperanto, hubert>` when **training and testing**.
 
 * DeepSpeech
 
@@ -139,11 +138,12 @@ python main.py data/obama/ --workspace trial_obama_torso/ -O --torso --test # re
 
 ```bash
 python main.py data/obama/ --workspace trial_obama_torso/ -O --torso --test --test_train --aud <audio>.npy
+# add "--smooth_path" may help decrease shaking of the head part
 ```
 
 ## Citation
 
-Cite as below if you find this repository is helpful to your project:
+Consider citing as below if you find this repository helpful to your project:
 
 ```
 @article{li2023ernerf,
@@ -156,4 +156,4 @@ Cite as below if you find this repository is helpful to your project:
 
 ## Acknowledgement
 
-This code is developed based on [RAD-NeRF](https://github.com/ashawkey/RAD-NeRF), [DFRF](https://github.com/sstzal/DFRF),   [GeneFace](https://github.com/yerfor/GeneFace), and [AD-NeRF](https://github.com/YudongGuo/AD-NeRF).  Thanks for these great projects.
+This code is developed heavily relying on [RAD-NeRF](https://github.com/ashawkey/RAD-NeRF), and also [DFRF](https://github.com/sstzal/DFRF), [GeneFace](https://github.com/yerfor/GeneFace), and [AD-NeRF](https://github.com/YudongGuo/AD-NeRF).  Thanks for these great projects.
