@@ -1,6 +1,6 @@
 # Efficient Region-Aware Neural Radiance Fields for High-Fidelity Talking Portrait Synthesis
 This is the official repository for our ICCV 2023 paper **Efficient Region-Aware Neural Radiance Fields for High-Fidelity Talking Portrait Synthesis**.
-### [Paper](https://arxiv.org/abs/2307.09323) | [Project](https://fictionarry.github.io/ER-NeRF/) | [Video](https://youtu.be/Gc2d3Z8MMuI)
+### [Paper](https://openaccess.thecvf.com/content/ICCV2023/html/Li_Efficient_Region-Aware_Neural_Radiance_Fields_for_High-Fidelity_Talking_Portrait_Synthesis_ICCV_2023_paper.html) | [Project](https://fictionarry.github.io/ER-NeRF/) | [ArXiv](https://arxiv.org/abs/2307.09323) | [Video](https://youtu.be/Gc2d3Z8MMuI)
 ![image](assets/main.png)
 ## Installation
 
@@ -146,7 +146,7 @@ python main.py data/obama/ --workspace trial_obama_torso/ -O --torso --test --te
 Consider citing as below if you find this repository helpful to your project:
 
 ```
-@InProceedings{Li_2023_ICCV,
+@InProceedings{li2023ernerf,
     author    = {Li, Jiahe and Zhang, Jiawei and Bai, Xiao and Zhou, Jun and Gu, Lin},
     title     = {Efficient Region-Aware Neural Radiance Fields for High-Fidelity Talking Portrait Synthesis},
     booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
