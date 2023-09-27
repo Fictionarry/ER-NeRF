@@ -137,8 +137,8 @@ python main.py data/obama/ --workspace trial_obama_torso/ -O --torso --test # re
 ### Inference with target audio
 
 ```bash
+# Adding "--smooth_path" may help decrease the jitter of the head, while being less accurate to the original pose.
 python main.py data/obama/ --workspace trial_obama_torso/ -O --torso --test --test_train --aud <audio>.npy
-# add "--smooth_path" may help decrease shaking of the head part
 ```
 
 ## Citation
@@ -146,11 +146,13 @@ python main.py data/obama/ --workspace trial_obama_torso/ -O --torso --test --te
 Consider citing as below if you find this repository helpful to your project:
 
 ```
-@article{li2023ernerf,
-  title={Efficient Region-Aware Neural Radiance Fields for High-Fidelity Talking Portrait Synthesis},
-  author={Li, Jiahe and Zhang, Jiawei and Bai, Xiao and Zhou, Jun and Gu, Lin},
-  journal={arXiv preprint arXiv:2307.09323},
-  year={2023}
+@InProceedings{Li_2023_ICCV,
+    author    = {Li, Jiahe and Zhang, Jiawei and Bai, Xiao and Zhou, Jun and Gu, Lin},
+    title     = {Efficient Region-Aware Neural Radiance Fields for High-Fidelity Talking Portrait Synthesis},
+    booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+    month     = {October},
+    year      = {2023},
+    pages     = {7568-7578}
 }
 ```
 
