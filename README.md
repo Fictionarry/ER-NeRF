@@ -37,7 +37,7 @@ pip install tensorflow-gpu==2.8.0
 
   ```
   cp 01_MorphableModel.mat data_util/face_tracking/3DMM/
-  cd data_util/face_tracking
+  cd data_utils/face_tracking
   python convert_BFM.py
   ```
 
