@@ -79,10 +79,14 @@ parser = ArgumentParser()
 parser.add_argument('--wav', type=str, help='')
 args = parser.parse_args()
 
-wav_16k_name = args.wav
-speech_16k, _ = sf.read(wav_16k_name)
+wav_name = args.wav
+
+speech, sr = sf.read(wav_name)
+speech_16k = librosa.resample(speech, orig_sr=sr, target_sr=16000)
+print("SR: {} to {}".format(sr, 16000))
+# print(speech.shape, speech_16k.shape)
 
 hubert_hidden = get_hubert_from_16k_speech(speech_16k)
 hubert_hidden = make_even_first_dim(hubert_hidden).reshape(-1, 2, 1024)
-np.save(wav_16k_name.replace('.wav', '_hu.npy'), hubert_hidden.detach().numpy())
+np.save(wav_name.replace('.wav', '_hu.npy'), hubert_hidden.detach().numpy())
 print(hubert_hidden.detach().numpy().shape)

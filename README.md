@@ -36,9 +36,10 @@ pip install tensorflow-gpu==2.8.0
 - Download 3DMM model from [Basel Face Model 2009](https://faces.dmi.unibas.ch/bfm/main.php?nav=1-1-0&id=details):
 
   ```
-  cp 01_MorphableModel.mat data_util/face_tracking/3DMM/
-  cd data_utils/face_tracking
-  python convert_BFM.py
+  # 1. copy 01_MorphableModel.mat to data_util/face_tracking/3DMM/
+  # 2.
+    cd data_utils/face_tracking
+    python convert_BFM.py
   ```
 
 ## Datasets and pretrained models
@@ -117,7 +118,7 @@ You should specify the type of audio feature by `--asr_model <deepspeech, espera
 First time running will take some time to compile the CUDA extensions.
 
 ```bash
-# train (head and lpips finetune)
+# train (head and lpips finetune, run in sequence)
 python main.py data/obama/ --workspace trial_obama/ -O --iters 100000
 python main.py data/obama/ --workspace trial_obama/ -O --iters 125000 --finetune_lips --patch_size 32
 
