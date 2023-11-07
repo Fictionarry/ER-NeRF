@@ -423,7 +423,7 @@ class NeRFDataset:
         # load action units
         import pandas as pd
         au_blink_info=pd.read_csv(os.path.join(self.root_path, 'au.csv'))
-        au_blink = au_blink_info[' AU45_r'].values
+        au_blink = au_blink_info['AU45_r'].values
 
         self.torso_img = []
         self.images = []
