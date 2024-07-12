@@ -216,6 +216,8 @@ for iter in range(71):
     sel_texture = model_3dmm.forward_tex(sel_tex_para)
     geometry = model_3dmm.forward_geo(sel_id_para, sel_exp_para)
     rott_geo = forward_rott(geometry, sel_euler, sel_trans)
+    #FIX for RuntimeError: CUDA error: an illegal memory access was encountered
+    torch.cuda.synchronize()
     render_imgs = renderer(
         rott_geo.to(device_render),
         sel_texture.to(device_render),
