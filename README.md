@@ -21,6 +21,14 @@ pip install "git+https://github.com/facebookresearch/pytorch3d.git"
 pip install tensorflow-gpu==2.8.0
 ```
 
+### Updated Dockerfile
+2024.09.13: 
+- `Dockerfile_113_clean` is a new tested dockerfile that follows the readme instruction instead of the old `Dockerfile`, mainly it's based on CUDA 11.3 instead of 11.7. It relies on `requirements_113.txt`, with the only difference of specifying NumPy version 1.26.4 (tested), so that newest NumPy 2.* packages that has [compatibility issues](https://github.com/Fictionarry/ER-NeRF/issues/163) with other dependencies will not be installed automatically. 
+- `Dockerfile_113_domestic` includes tested alternative sources (channel/index) for users without a stable connection to official packages. 
+  - some credits go to discussions on issues like installing [tensorflow-gpu](https://github.com/Fictionarry/ER-NeRF/issues/47) from tsinghua pip mirror. 
+- The new dockerfile installs the dependencies into conda environment `ernerf`, and also you still need to download the required files below
+  - some other weight files that will be downloaded at runtime (e.g. from huggingface or torch hub) can be manually downloaded and copy pasted following comments in the domestic dockerfile. 
+
 ### Preparation
 
 - Prepare face-parsing model.

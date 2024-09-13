@@ -1,0 +1,37 @@
+FROM nvidia/cuda:11.3.1-cudnn8-devel-ubuntu18.04
+
+# the shell to install conda in, will be replaced with conda run later
+SHELL ["/bin/bash", "-c"]
+
+RUN apt-get update
+RUN apt-get install --no-install-recommends pkg-config wget cmake curl git vim nano portaudio19-dev ffmpeg libsm6 libxext6 -y
+RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+RUN sh Miniconda3-latest-Linux-x86_64.sh -b -u -p ~/miniconda3
+RUN ~/miniconda3/bin/conda init
+RUN source ~/.bashrc
+RUN rm Miniconda3-latest-Linux-x86_64.sh
+
+# add conda path
+ENV PATH="/root/miniconda3/bin:${PATH}"
+
+# follow the readme instruction instead of the dockerfile
+RUN conda create -n ernerf python=3.10 -y
+# conda activate ernerf / rest of RUN commands will run in ernerf env
+SHELL ["conda", "run", "-n", "ernerf", "/bin/bash", "-c"]
+
+# install dependencies following readme
+RUN conda install pytorch==1.12.1 torchvision==0.13.1 cudatoolkit=11.3 -y
+# copy requirements with numpy 1.26.4
+COPY requirements_113.txt .
+RUN pip install -r requirements_113.txt
+RUN pip install "git+https://github.com/facebookresearch/pytorch3d.git"
+RUN pip install tf-estimator-nightly==2.8.0.dev2021122109
+RUN pip install tensorflow-gpu==2.8.0
+
+# change protobuf version to avoid list indice as key error (same as in official dockerfile)
+RUN pip uninstall protobuf -y
+RUN pip install protobuf==3.20.1
+
+# missing from audio pipeline
+RUN pip install transformers==4.44.2
+RUN pip install librosa==0.10.2.post1

@@ -1,0 +1,58 @@
+FROM nvidia/cuda:11.3.1-cudnn8-devel-ubuntu18.04
+
+# NOTE: add sources appropriate for use in domestic network environment
+# Consider changing host's apt sources (e.g. /etc/apt/sources.list) to use domestic sources too
+
+ENV HF_ENDPOINT="https://hf-mirror.com"
+
+# the shell to install conda in, will be replaced with conda run later
+SHELL ["/bin/bash", "-c"]
+
+RUN apt-get update
+RUN apt-get install --no-install-recommends pkg-config wget cmake curl git vim nano portaudio19-dev ffmpeg libsm6 libxext6 -y
+# prepare a install file in host, in case wget times out
+COPY Miniconda3-latest-Linux-x86_64.sh .
+# RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+RUN sh Miniconda3-latest-Linux-x86_64.sh -b -u -p ~/miniconda3
+RUN ~/miniconda3/bin/conda init
+RUN source ~/.bashrc
+RUN rm Miniconda3-latest-Linux-x86_64.sh
+
+# add conda path
+ENV PATH="/root/miniconda3/bin:${PATH}"
+
+# add mirror
+RUN conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/pytorch
+RUN conda config --set show_channel_urls yes
+
+# follow the readme instruction instead of the dockerfile
+RUN conda create -n ernerf python=3.10 -y
+# conda activate ernerf / rest of RUN commands will run here
+SHELL ["conda", "run", "-n", "ernerf", "/bin/bash", "-c"]
+
+# install dependencies following readme (now with alternative index/channel/sources)
+RUN conda install pytorch==1.12.1 torchvision==0.13.1 cudatoolkit=11.3 -y
+# copy requirements with numpy 1.26.4
+COPY requirements_113.txt .
+RUN pip install -r requirements_113.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+# use gitclone.com to avoid git clone time out errors
+RUN pip install "git+https://gitclone.com/github.com/facebookresearch/pytorch3d.git"
+RUN pip install tf-estimator-nightly==2.8.0.dev2021122109 -i https://pypi.doubanio.com/simple/
+RUN pip install tensorflow-gpu==2.8.0 -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+# change protobuf version to avoid list indice as key error
+RUN pip uninstall protobuf -y
+RUN pip install protobuf==3.20.1 -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+# missing from audio pipeline
+RUN pip install transformers==4.44.2 -i https://pypi.tuna.tsinghua.edu.cn/simple
+RUN pip install librosa==0.10.2.post1 -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+# copy paste downdloaded weights (2DFAN4-cd938726ad.zip  alexnet-owt-7be5be79.pth  resnet18-5c106cde.pth  s3fd-619a316812.pth)
+# this can be found in the host's /root/.cache/torch/hub/ directory if you try to run the training on host first
+# these COPY commands aim to reduce the time needed to download these weights inside container as much as possible
+# COPY checkpoints/ /root/.cache/torch/hub/
+# COPY deepspeech-0_1_0-b90017e8.pb /root/.tensorflow/models/deepspeech-0_1_0-b90017e8.pb
+
+# copy paste already-set-up ER-NeRF files: git clone, downloaded weights, extracted Basel Face Model Data, etc. 
+# COPY $ERNERF_DIR/ /ernerf/
