@@ -3,9 +3,10 @@ This is the official repository for our ICCV 2023 paper **Efficient Region-Aware
 ### [Paper](https://openaccess.thecvf.com/content/ICCV2023/html/Li_Efficient_Region-Aware_Neural_Radiance_Fields_for_High-Fidelity_Talking_Portrait_Synthesis_ICCV_2023_paper.html) | [Project](https://fictionarry.github.io/ER-NeRF/) | [ArXiv](https://arxiv.org/abs/2307.09323) | [Video](https://youtu.be/Gc2d3Z8MMuI)
 ![image](assets/main.png)
 
-## Update
-- [2024/07/02] Our new work [TalkingGaussian](https://fictionarry.github.io/TalkingGaussian/) is released!
-- TODO: Use AU to implement SyncTalk's full expression control, just like what we do in TalkingGaussian.
+## Updates
+- [2025/02/28] Our work [InsTaG](https://fictionarry.github.io/InsTaG/) at CVPR 2025 is released! 🔥
+- [2024/07/02] Our work [TalkingGaussian](https://fictionarry.github.io/TalkingGaussian/) at ECCV 2024 is released! 🔥
+- TODO: Use AU to implement SyncTalk's full expression control, just like what we do in TalkingGaussian.  
 
 ## Installation
 
